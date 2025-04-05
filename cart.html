@@ -4,81 +4,120 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Shopping Cart</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f3f4f6;
+    * {
       margin: 0;
-      padding: 20px;
+      padding: 0;
+      box-sizing: border-box;
     }
 
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+      color: #1f2937;
+    }
+
+    /* Header */
+    header {
+      background-color: #111827;
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+    }
+
+    nav a {
+      color: #d1d5db;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    /* Container */
     .container {
-      max-width: 900px;
-      margin: auto;
-      background: #fff;
+      max-width: 1000px;
+      margin: 40px auto;
+      background: #ffffff;
       padding: 30px;
       border-radius: 16px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
     }
 
-    h1 {
+    h2 {
       margin-bottom: 30px;
       font-size: 2rem;
+      font-weight: 600;
     }
 
     .cart-item {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid #e5e7eb;
+      align-items: center;
       padding: 20px 0;
+      border-bottom: 1px solid #e5e7eb;
     }
 
-    .cart-item img {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-right: 20px;
-    }
-
-    .item-details {
-      flex: 1;
+    .item-info {
       display: flex;
       align-items: center;
     }
 
-    .item-info h2 {
-      font-size: 1rem;
-      margin: 0;
+    .item-info img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-right: 20px;
     }
 
-    .item-info p {
-      margin: 4px 0;
-      color: #6b7280;
+    .item-details h3 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .item-details p {
       font-size: 0.9rem;
+      color: #6b7280;
     }
 
     .item-actions {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 15px;
     }
 
     .item-actions input {
-      width: 50px;
-      padding: 4px;
+      width: 60px;
+      padding: 6px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
       text-align: center;
     }
 
-    .remove-btn {
-      color: #ef4444;
-      text-decoration: none;
-      font-weight: bold;
+    .item-actions span {
+      font-weight: 600;
     }
 
-    .remove-btn:hover {
-      text-decoration: underline;
+    .remove-link {
+      color: #ef4444;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .remove-link:hover {
+      color: #b91c1c;
     }
 
     .summary {
@@ -88,68 +127,88 @@
 
     .summary p {
       font-size: 1.2rem;
-      font-weight: bold;
+      font-weight: 600;
+      margin-bottom: 10px;
     }
 
     .checkout-btn {
       background-color: #2563eb;
       color: white;
-      padding: 10px 25px;
+      padding: 12px 30px;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       font-size: 1rem;
-      margin-top: 10px;
       cursor: pointer;
       transition: background-color 0.3s;
     }
 
     .checkout-btn:hover {
-      background-color: #1d4ed8;
+      background-color: #1e40af;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 700px) {
       .cart-item {
         flex-direction: column;
         align-items: flex-start;
-      }
-
-      .item-actions {
-        margin-top: 10px;
         gap: 10px;
       }
 
-      .summary {
-        text-align: left;
+      .item-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      nav a {
+        margin-left: 0;
+        margin-right: 15px;
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- Header -->
+  <header>
+    <h1>🛍️ MyPerfumeStore</h1>
+    <nav>
+      <a href="/home.html">Home</a>
+      <a href="/checkout.html">Checkout</a>
+      <a href="/user_details.html">User <Details></Details></a>
+      <a href="/products.html">Product</a>
+    </nav>
+  </header>
+
+  <!-- Main Container -->
   <div class="container">
-    <h1>Your Cart</h1>
+    <h2>Your Shopping Cart</h2>
 
     <!-- Cart Item -->
     <div class="cart-item">
-      <div class="item-details">
-        <img src="https://via.placeholder.com/80" alt="Product">
-        <div class="item-info">
-          <h2>Product Name</h2>
-          <p>Category or Short Description</p>
+      <div class="item-info">
+        <img src="https://via.placeholder.com/80" alt="Perfume">
+        <div class="item-details">
+          <h3>Elegant Rose</h3>
+          <p>50ml Eau de Parfum</p>
         </div>
       </div>
       <div class="item-actions">
         <input type="number" value="1" min="1">
-        <span>$49.99</span>
-        <a href="#" class="remove-btn">Remove</a>
+        <span>$59.99</span>
+        <a href="#" class="remove-link">Remove</a>
       </div>
     </div>
 
-    <!-- You can duplicate the above .cart-item for more products -->
+    <!-- Repeat cart-item if needed -->
 
     <!-- Summary -->
     <div class="summary">
-      <p>Subtotal: $49.99</p>
+      <p>Subtotal: $59.99</p>
       <button class="checkout-btn">Proceed to Checkout</button>
     </div>
   </div>
