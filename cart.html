@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Shopping Cart</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <title>Gaming Cart</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -14,89 +14,52 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #f9fafb;
-      color: #1f2937;
+      background-color: #0f172a;
+      color: #f8fafc;
+      padding: 20px;
     }
 
-    /* Header */
-.site-header {
-  background-color: #111827;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  padding: 20px 0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
+    header {
+      background-color: #1e293b;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #3b82f6;
+    }
 
-.header-container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 0 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      color: #3b82f6;
+    }
 
-.logo h1 {
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: #f9fafb;
-}
+    nav a {
+      color: #94a3b8;
+      margin-left: 25px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
 
-.nav-links {
-  display: flex;
-  gap: 25px;
-}
+    nav a:hover {
+      color: #ffffff;
+    }
 
-.nav-links a {
-  color: #d1d5db;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
-  position: relative;
-  transition: color 0.3s;
-}
-
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  bottom: -5px;
-  left: 0;
-  background-color: #3b82f6;
-  transition: width 0.3s;
-}
-
-.nav-links a:hover {
-  color: white;
-}
-
-.nav-links a:hover::after,
-.nav-links a.active::after {
-  width: 100%;
-}
-
-.nav-links a.active {
-  color: white;
-}
-
-
-    /* Container */
     .container {
       max-width: 1000px;
       margin: 40px auto;
-      background: #ffffff;
+      background: #1e293b;
       padding: 30px;
       border-radius: 16px;
-      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
     }
 
     h2 {
-      margin-bottom: 30px;
       font-size: 2rem;
       font-weight: 600;
+      margin-bottom: 25px;
+      color: #f1f5f9;
     }
 
     .cart-item {
@@ -104,7 +67,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 20px 0;
-      border-bottom: 1px solid #e5e7eb;
+      border-bottom: 1px solid #334155;
     }
 
     .item-info {
@@ -113,21 +76,21 @@
     }
 
     .item-info img {
-      width: 80px;
-      height: 80px;
+      width: 100px;
+      height: 100px;
       object-fit: cover;
-      border-radius: 10px;
+      border-radius: 12px;
       margin-right: 20px;
     }
 
     .item-details h3 {
-      font-size: 1rem;
+      font-size: 1.1rem;
       margin-bottom: 6px;
     }
 
     .item-details p {
       font-size: 0.9rem;
-      color: #6b7280;
+      color: #94a3b8;
     }
 
     .item-actions {
@@ -139,9 +102,11 @@
     .item-actions input {
       width: 60px;
       padding: 6px;
-      border: 1px solid #d1d5db;
-      border-radius: 6px;
+      border: none;
+      background: #334155;
+      color: white;
       text-align: center;
+      border-radius: 6px;
     }
 
     .item-actions span {
@@ -156,7 +121,7 @@
     }
 
     .remove-link:hover {
-      color: #b91c1c;
+      color: #f87171;
     }
 
     .summary {
@@ -171,7 +136,7 @@
     }
 
     .checkout-btn {
-      background-color: #2563eb;
+      background-color: #3b82f6;
       color: white;
       padding: 12px 30px;
       border: none;
@@ -182,7 +147,7 @@
     }
 
     .checkout-btn:hover {
-      background-color: #1e40af;
+      background-color: #2563eb;
     }
 
     @media (max-width: 700px) {
@@ -197,15 +162,8 @@
         justify-content: space-between;
       }
 
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-
-      nav a {
-        margin-left: 0;
-        margin-right: 15px;
+      nav {
+        margin-top: 10px;
       }
     }
   </style>
@@ -214,41 +172,55 @@
 
   <!-- Header -->
   <header>
-    <h1>🛍️ MyGaming</h1>
+    <h1>GameZone Cart</h1>
     <nav>
       <a href="/home.html">Home</a>
-      <a href="/checkout.html">Checkout</a>
-      <a href="/user_details.html">User <Details></Details></a>
       <a href="/products.html">Product</a>
+      <a href="/checkout.html">Checkout</a>
+      <a href="/user_details.html">User Details</a>
     </nav>
   </header>
 
-  <!-- Main Container -->
+  <!-- Cart Container -->
   <div class="container">
-    <h2>Your Shopping Cart</h2>
+    <h2>Your Gaming Gear</h2>
 
     <!-- Cart Item -->
     <div class="cart-item">
       <div class="item-info">
-        <img src="https://via.placeholder.com/80" alt="Perfume">
+        <img src="https://via.placeholder.com/100x100.png?text=Headset" alt="Gaming Headset">
         <div class="item-details">
-          <h3>Wireless Headphone</h3>
-          <p>Black</p>
+          <h3>HyperX Cloud II</h3>
+          <p>7.1 Surround Sound Gaming Headset</p>
         </div>
       </div>
       <div class="item-actions">
         <input type="number" value="1" min="1">
-        <span>$59.99</span>
+        <span>$99.99</span>
         <a href="#" class="remove-link">Remove</a>
       </div>
     </div>
 
-    <!-- Repeat cart-item if needed -->
+    <div class="cart-item">
+      <div class="item-info">
+        <img src="https://via.placeholder.com/100x100.png?text=Keyboard" alt="Mechanical Keyboard">
+        <div class="item-details">
+          <h3>SteelSeries Apex Pro</h3>
+          <p>RGB Mechanical Gaming Keyboard</p>
+        </div>
+      </div>
+      <div class="item-actions">
+        <input type="number" value="1" min="1">
+        <span>$179.99</span>
+        <a href="#" class="remove-link">Remove</a>
+      </div>
+    </div>
 
     <!-- Summary -->
     <div class="summary">
-      <p>Subtotal: $59.99</p>
-      <button class="checkout-btn">Proceed to Checkout</button>
+      <p>Total: $279.98</p>
+      <a href="checkout.html" class="checkout-btn">Proceed to Checkout</a>
+
     </div>
   </div>
 
