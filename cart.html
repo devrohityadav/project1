@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shopping Cart</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f3f4f6;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 20px 0;
+    }
+
+    .cart-item img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-right: 20px;
+    }
+
+    .item-details {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .item-info h2 {
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    .item-info p {
+      margin: 4px 0;
+      color: #6b7280;
+      font-size: 0.9rem;
+    }
+
+    .item-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .item-actions input {
+      width: 50px;
+      padding: 4px;
+      text-align: center;
+    }
+
+    .remove-btn {
+      color: #ef4444;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .remove-btn:hover {
+      text-decoration: underline;
+    }
+
+    .summary {
+      text-align: right;
+      margin-top: 30px;
+    }
+
+    .summary p {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .checkout-btn {
+      background-color: #2563eb;
+      color: white;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .checkout-btn:hover {
+      background-color: #1d4ed8;
+    }
+
+    @media (max-width: 600px) {
+      .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .item-actions {
+        margin-top: 10px;
+        gap: 10px;
+      }
+
+      .summary {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Your Cart</h1>
+
+    <!-- Cart Item -->
+    <div class="cart-item">
+      <div class="item-details">
+        <img src="https://via.placeholder.com/80" alt="Product">
+        <div class="item-info">
+          <h2>Product Name</h2>
+          <p>Category or Short Description</p>
+        </div>
+      </div>
+      <div class="item-actions">
+        <input type="number" value="1" min="1">
+        <span>$49.99</span>
+        <a href="#" class="remove-btn">Remove</a>
+      </div>
+    </div>
+
+    <!-- You can duplicate the above .cart-item for more products -->
+
+    <!-- Summary -->
+    <div class="summary">
+      <p>Subtotal: $49.99</p>
+      <button class="checkout-btn">Proceed to Checkout</button>
+    </div>
+  </div>
+
+</body>
+</html>
