@@ -3,31 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Checkout Page</title>
+  <title>Checkout</title>
   <style>
     * {
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
     }
 
     body {
-      background-color: #f4f4f4;
       margin: 0;
-      padding: 0;
+      background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
       display: flex;
       justify-content: center;
       align-items: flex-start;
       min-height: 100vh;
+      padding: 2rem;
     }
 
     .checkout-container {
       background: #fff;
       padding: 2rem;
-      margin: 2rem;
-      border-radius: 10px;
+      border-radius: 16px;
       max-width: 600px;
       width: 100%;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
 
     .checkout-header {
@@ -36,7 +35,7 @@
     }
 
     .form-group {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
 
     .form-group label {
@@ -49,7 +48,8 @@
       width: 100%;
       padding: 0.75rem;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 8px;
+      font-size: 1rem;
     }
 
     .checkout-summary {
@@ -71,26 +71,26 @@
     }
 
     .checkout-button {
-      background-color: #28a745;
+      background-color: #6772e5;
       color: white;
       padding: 1rem;
       width: 100%;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       font-size: 1rem;
       cursor: pointer;
       margin-top: 1.5rem;
+      transition: background 0.3s ease;
     }
 
     .checkout-button:hover {
-      background-color: #218838;
+      background-color: #5469d4;
     }
 
     .error {
       color: red;
-      font-size: 0.9rem;
-      margin-top: -1rem;
-      margin-bottom: 1rem;
+      font-size: 0.85rem;
+      margin-top: 0.25rem;
     }
   </style>
 </head>
@@ -152,7 +152,7 @@
         </div>
       </div>
 
-      <button type="submit" class="checkout-button">Place Order</button>
+      <button type="submit" class="checkout-button">Pay with Stripe</button>
     </form>
   </div>
 
@@ -162,7 +162,6 @@
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
-      // Clear previous errors
       const errorFields = document.querySelectorAll('.error');
       errorFields.forEach(err => err.textContent = '');
 
@@ -181,33 +180,34 @@
       }
 
       if (!/^\S+@\S+\.\S+$/.test(email)) {
-        document.getElementById('error-email').textContent = 'Invalid email address';
+        document.getElementById('error-email').textContent = 'Invalid email';
         isValid = false;
       }
 
       if (address === '') {
-        document.getElementById('error-address').textContent = 'Address is required';
+        document.getElementById('error-address').textContent = 'Address required';
         isValid = false;
       }
 
       if (!/^\d{16}$/.test(card.replace(/\s/g, ''))) {
-        document.getElementById('error-card').textContent = 'Card number must be 16 digits';
+        document.getElementById('error-card').textContent = 'Enter 16-digit card';
         isValid = false;
       }
 
       if (!/^\d{2}\/\d{2}$/.test(expiry)) {
-        document.getElementById('error-expiry').textContent = 'Use MM/YY format';
+        document.getElementById('error-expiry').textContent = 'Format MM/YY';
         isValid = false;
       }
 
       if (!/^\d{3,4}$/.test(cvv)) {
-        document.getElementById('error-cvv').textContent = 'CVV must be 3 or 4 digits';
+        document.getElementById('error-cvv').textContent = 'CVV must be 3–4 digits';
         isValid = false;
       }
 
       if (isValid) {
-        alert('✅ Order placed successfully!');
-        form.reset();
+        alert('✅ Redirecting to Stripe Checkout...');
+        // Simulate redirect or call Stripe session here
+        // window.location.href = 'https://checkout.stripe.com/pay/cs_test_...';
       }
     });
   </script>
