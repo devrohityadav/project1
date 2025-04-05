@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Recent Orders</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f3f4f6;
+      padding: 40px 20px;
+    }
+
+    .orders-section {
+      max-width: 1000px;
+      margin: auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      text-align: center;
+      color: #111827;
+      margin-bottom: 25px;
+      font-size: 1.8rem;
+    }
+
+    .order-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      background-color: #f9fafb;
+    }
+
+    .order-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: #1f2937;
+    }
+
+    .order-info {
+      font-size: 0.95rem;
+      color: #4b5563;
+      margin: 6px 0;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    .status-pending {
+      background-color: #fff3cd;
+      color: #856404;
+    }
+
+    .status-completed {
+      background-color: #d4edda;
+      color: #155724;
+    }
+
+    .status-cancelled {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+
+    .payment-cod {
+      background-color: #ffeeba;
+      color: #8a6d3b;
+    }
+
+    .payment-card {
+      background-color: #cfe2ff;
+      color: #004085;
+    }
+
+    @media screen and (max-width: 600px) {
+      .order-header {
+        flex-direction: column;
+        gap: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="orders-section">
+    <h2>My Recent Orders</h2>
+
+    <div class="order-card">
+      <div class="order-header">
+        <span>Order #1001</span>
+        <span>Placed on: March 25, 2025</span>
+      </div>
+      <div class="order-info">Product: Nike Air Max (x2)</div>
+      <div class="order-info">Total: $200</div>
+      <div class="badge payment-cod">Cash on Delivery</div>
+      <div class="badge status-pending">Pending</div>
+    </div>
+
+    <div class="order-card">
+      <div class="order-header">
+        <span>Order #1002</span>
+        <span>Placed on: March 20, 2025</span>
+      </div>
+      <div class="order-info">Product: Adidas Ultraboost (x1)</div>
+      <div class="order-info">Total: $150</div>
+      <div class="badge payment-card">Paid by Card</div>
+      <div class="badge status-completed">Completed</div>
+    </div>
+
+    <div class="order-card">
+      <div class="order-header">
+        <span>Order #1003</span>
+        <span>Placed on: March 15, 2025</span>
+      </div>
+      <div class="order-info">Product: Puma RS-X (x3)</div>
+      <div class="order-info">Total: $270</div>
+      <div class="badge payment-cod">Cash on Delivery</div>
+      <div class="badge status-cancelled">Cancelled</div>
+    </div>
+
+  </div>
+</body>
+</html>
