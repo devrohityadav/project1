@@ -9,11 +9,12 @@
 
 body {
   min-height: 100vh;
-  background-color: #1c1c1c;
-  color: #fff;
+  background-color: var(--bg-color, #1c1c1c);
+  color: var(--text-color, #fff);
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 header {
@@ -31,12 +32,12 @@ header {
 
 .logo {
   font-size: 2em;
-  color: #fff;
+  color: var(--text-color, #fff);
   font-weight: 700;
 }
 
 .navigation a {
-  color: #fff;
+  color: var(--text-color, #fff);
   text-decoration: none;
   margin-left: 25px;
   font-weight: 500;
@@ -58,20 +59,26 @@ header {
   width: 100%;
 }
 
-.btnLogin-popup {
+.btnLogin-popup,
+.theme-toggle {
   margin-left: 30px;
   padding: 10px 25px;
-  border: 2px solid #fff;
+  border: 2px solid var(--text-color, #fff);
   background: transparent;
-  color: #fff;
+  color: var(--text-color, #fff);
   border-radius: 5px;
   transition: 0.3s;
   cursor: pointer;
 }
 
-.btnLogin-popup:hover {
-  background: #fff;
-  color: #1c1c1c;
+.btnLogin-popup:hover,
+.theme-toggle:hover {
+  background: var(--text-color, #fff);
+  color: var(--bg-color, #1c1c1c);
+}
+
+.theme-toggle {
+  font-size: 1.2em;
 }
 
 .hero-section {
@@ -89,6 +96,7 @@ header {
   background: rgba(0, 0, 0, 0.6);
   padding: 40px;
   border-radius: 15px;
+  animation: slideIn 1s ease-out;
 }
 
 .hero-text h1 {
@@ -147,7 +155,75 @@ footer {
   margin-top: auto;
 }
 
-/* Animation */
+/* Login Modal Styles */
+.login-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.login-modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background: var(--bg-color, #1c1c1c);
+  padding: 40px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+  animation: modalFadeIn 0.5s ease;
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.8em;
+  cursor: pointer;
+  color: var(--text-color, #fff);
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+}
+
+.modal-content form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--text-color, #fff);
+}
+
+.modal-content form button {
+  width: 100%;
+  padding: 10px;
+  background: #ff4757;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.modal-content form button:hover {
+  background: #e84118;
+}
+
+/* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -156,6 +232,28 @@ footer {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
@@ -181,4 +279,46 @@ footer {
   .wrapper {
     width: 90%;
   }
+}
+
+/* Light Theme Overrides */
+body.light-theme {
+  --bg-color: #f4f4f4;
+  --text-color: #333;
+}
+
+body.light-theme header {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+body.light-theme .hero-text {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+body.light-theme .btnLogin-popup,
+body.light-theme .theme-toggle {
+  border-color: var(--text-color);
+  color: var(--text-color);
+}
+
+body.light-theme .btnLogin-popup:hover,
+body.light-theme .theme-toggle:hover {
+  background: var(--text-color);
+  color: var(--bg-color);
+}
+
+body.light-theme .login-modal .modal-content {
+  background: #fff;
+  color: #333;
+}
+
+body.light-theme .close-modal {
+  color: #333;
+}
+
+body.light-theme .modal-content form input {
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #333;
 }
